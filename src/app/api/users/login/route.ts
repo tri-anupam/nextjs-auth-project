@@ -9,7 +9,6 @@ export async function POST (request:NextRequest){
     try{
         const reqBody = await request.json();
         const {email,password} = reqBody;
-        console.log(reqBody)
 
         //check if user exists
         const user = await User.findOne({email})
@@ -22,6 +21,7 @@ export async function POST (request:NextRequest){
         if(!validPassword){
             return NextResponse.json({error:"Invalid emailid or password"},{status:400})
         }
+
         //create token  data
         const tokenData = {
             id:user._id,
