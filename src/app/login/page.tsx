@@ -3,7 +3,7 @@ import  Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function LoginPage(){
@@ -24,8 +24,9 @@ export default function LoginPage(){
             toast.success("Login success")
             router.push("/profile")
         }catch(error:any){
+            toast.error("Invalid Email Id or Password")
             console.log("Login failed",error.message);
-            toast.error(error.message)
+            
         }finally{
             setLoading(false);
         }
@@ -40,6 +41,7 @@ export default function LoginPage(){
     
     return(
         <div className='flex flex-col items-center justify-center min-h-screen py-2'>
+            <Toaster/>
            <h1>{loading?"Processing":"Login"}</h1>
            <hr/>
            <label htmlFor="username">Username</label>

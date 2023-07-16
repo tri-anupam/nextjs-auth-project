@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 export default function SignupPage() {
@@ -21,9 +21,10 @@ export default function SignupPage() {
             setLaoding(true);
             const response = await axios.post("/api/users/signup",user);
             console.log("Signup success",response.data);
+            toast.success("Sign Up Successful")
             router.push("/login");
         } catch (error:any) {
-            toast.error(error.message)
+            toast.error("Please fill all detail accurately")
             console.log("Signup failed",error.message)
 
         }finally{
@@ -42,6 +43,7 @@ export default function SignupPage() {
 
     return (
         <div className='flex flex-col items-center justify-center min-h-screen py-2'>
+            <Toaster/>
             <h1 className='text-white font-bold text-3xl border border-pink-700 p-2 mb-4 rounded stroke-cyan-500 shadow-md shadow-red-600 '>{loading ? "Processing" : "Sign Up"}</h1>
             <hr />
             <label htmlFor="username">Username</label>
@@ -73,6 +75,7 @@ export default function SignupPage() {
                 placeholder='password'
             />
             <button
+                // {buttonDisabled?"":onclick{onSignup}}
                 onClick={onSignup}
                 className={`p-2 bg-blue-500 hover:bg-blue-600 font-bold rounded-md
             ${buttonDisabled ? "cursor-not-allowed" : "cursor-pointer"}`}>Sign Up</button>
