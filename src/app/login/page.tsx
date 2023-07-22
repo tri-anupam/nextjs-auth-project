@@ -56,7 +56,7 @@ export default function LoginPage() {
                         type='email'
                         value={user.email}
                         onChange={(e) => setUser({ ...user, email: e.target.value })}
-                        placeholder='emailid'
+                        placeholder='email id'
                     />
                 </div>
 
