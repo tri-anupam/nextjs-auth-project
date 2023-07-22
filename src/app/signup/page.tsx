@@ -42,8 +42,9 @@ export default function SignupPage() {
 
 
     return (
-        <div className='flex flex-col items-center justify-center min-h-screen py-2'>
+        <div className='flex flex-col items-center justify-center min-h-screen py-2 drop-shadow-2xl shadow-lg shadow-indigo-500/40 rounded-lg'>
             <Toaster/>
+        
             <h1 className='text-white font-bold text-3xl border border-pink-700 p-2 mb-4 rounded stroke-cyan-500 shadow-md shadow-red-600 '>{loading ? "Processing" : "Sign Up"}</h1>
             <hr />
             <label htmlFor="username">Username</label>
@@ -79,7 +80,7 @@ export default function SignupPage() {
                 onClick={onSignup}
                 className={`p-2 bg-blue-500 hover:bg-blue-600 font-bold rounded-md
             ${buttonDisabled ? "cursor-not-allowed" : "cursor-pointer"}`}>Sign Up</button>
-            <Link href="/login" className='mt-3 underline'>Visit Login Page</Link>
+            <Link href="/login" className='mt-3 underline text-blue-300'>Visit Login Page</Link>
         </div>
     )
 }
