@@ -46,6 +46,7 @@ export default function ProfilePage() {
                 onClick={getUserDetails}>
                 Get User Details
             </button>
+
         </div>
     )
 }
